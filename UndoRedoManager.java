@@ -2,7 +2,7 @@ package DoubleLinkedList;
 
 /**
  * Implememt an application that support undo/redo functionality. Use a linked list to maintain a sequence of states.\
- * Each state change is stored as a node in the list, allowoing for easy navigation
+ * Each state change is stored as a node in the list, allowing for easy navigation
  * 1<>2<>3<>4<>5
  */
 
@@ -37,11 +37,14 @@ public class UndoRedoManager<T> {
     }
 
 
-    //Redo Operation
-    public T redo(){
-        //implement me
+    public T redo() {
+        if (currentState == null || currentState.next == null) {
+            System.out.println("No more redo available");
+            return null;
+        }
+        currentState = currentState.next;
+        return currentState.state;
     }
-
     public static void main(String[] args) {
 
 
