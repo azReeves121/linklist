@@ -17,6 +17,15 @@ public class UndoRedoManager<T> {
 
     }
     private Node currentState;
+
+    public void addState(T newState) {
+        Node newNode = new Node(newState);
+        if (currentState != null) {
+            currentState.next = newNode;
+            newNode.prev = currentState;
+        }
+        currentState = newNode;
+    }
     //Undo operation
     public T undo(){
        //implement me
