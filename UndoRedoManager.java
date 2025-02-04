@@ -27,15 +27,15 @@ public class UndoRedoManager<T> {
         currentState = newNode;
     }
     //Undo operation
-    public T undo(){
-       //implement me
+    public T undo() {
+        if (currentState == null || currentState.prev == null) {
+            System.out.println("No more undo available");
+            return null;
+        }
+        currentState = currentState.prev;
+        return currentState.state;
     }
 
-    //perform an operation
-    public void  addState (T newState) {
-        //implement me
-
-    }
 
     //Redo Operation
     public T redo(){
